@@ -6,7 +6,7 @@ export default function About() {
       
       <section>
         <h2>Our Mission</h2>
-        <p>To deliver exceptional services that drive our clients' success.</p>
+        <p>To deliver exceptional services that drive our clients success.</p>
       </section>
     </div>
   );

@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Wrench, ChevronDown, Code, Smartphone, Search, Palette } from 'lucide-react';
 import { JSX } from 'react';
+import Image from 'next/image';
 
 export default function GlassNavbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -90,7 +91,7 @@ const getServiceIcon = (iconName: IconName): JSX.Element => {
           <div className="flex justify-between items-center px-10 py-4">
             {/* Logo */}
             <Link href="/">
-              <img
+              <Image
                 src="/img/logo.png"
                 alt="Logo"
                 className={`h-8 w-auto transition-all duration-300 ${

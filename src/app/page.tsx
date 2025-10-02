@@ -7,6 +7,7 @@ import Company from '@/components/company';
 import Choose from '@/components/choose';
 import Complete from '@/components/complete';
 import Client from '@/components/client';
+import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFigma, faJsSquare, faPhp } from '@fortawesome/free-brands-svg-icons';
 import { faDatabase } from '@fortawesome/free-solid-svg-icons';
@@ -83,7 +84,7 @@ export default function Home() {
               className="w-full sm:w-auto px-8 py-3 border-2 border-black text-black font-semibold rounded-xl hover:bg-gray-100 transition duration-300 flex items-center justify-center"
             >
               See Work
-              <img
+              <Image
                 src="/img/seework.png"
                 alt="Arrow Right"
                 className="inline-block ml-2 w-4 h-4"

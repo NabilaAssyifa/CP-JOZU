@@ -12,7 +12,7 @@ export default function Choose() {
             Why Choose Jozu for Your Digital Transformation
           </h2>
           <p className="text-base md:text-lg text-gray-600 text-center lg:text-left">
-            At Jozu, we don't just deliver IT services, we craft tailored, innovative solutions focused on your business growth. With a user-centered approach and a professional team, we're ready to be your trusted digital partner at every step of your transformation journey.
+            At Jozu, we don&apos;t just deliver IT services, we craft tailored, innovative solutions focused on your business growth. With a user-centered approach and a professional team, we&apos;re ready to be your trusted digital partner at every step of your transformation journey.
           </p>
           {/* Horizontal Stats */}
           <div className="flex flex-col sm:flex-row justify-center lg:justify-between gap-6 mt-10">
