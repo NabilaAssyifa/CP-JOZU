@@ -3,12 +3,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
   faPhone, 
-  faEnvelope, 
-  faShieldAlt,
-  faRocket,
-  faUsers,
-  faLightbulb,
-  faGlobe
+  faEnvelope
 } from "@fortawesome/free-solid-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { motion } from "framer-motion";
@@ -35,14 +30,10 @@ export default function Contact() {
     }
   ];
 
-  // Variants untuk Framer Motion
+  // Framer Motion variants
   const containerVariants = {
     hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
+    visible: { transition: { staggerChildren: 0.2 } }
   };
 
   const itemVariants = {
@@ -51,35 +42,33 @@ export default function Contact() {
   };
 
   return (
-    <div className="h-screen w-screen overflow-hidden bg-white flex flex-col">
-      <div className="max-w-7xl mx-auto">
+    <div className="h-screen w-screen overflow-hidden bg-white flex flex-col justify-center items-center">
+      <div className="max-w-4xl w-full flex flex-col items-center text-center px-4 sm:px-6">
 
         {/* Header Section */}
         <motion.div
-          className="text-center mb-20 mt-30"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-flex items-center gap-3 bg-gray-100 px-6 py-3 rounded-full mb-8">
+          <div className="inline-flex items-center gap-3 bg-gray-100 px-6 py-2 rounded-full mb-6">
             <div className="w-2 h-2 bg-gray-600 rounded-full animate-pulse"></div>
             <span className="text-sm font-semibold text-gray-700 tracking-wide">GET IN TOUCH</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-black text-gray-900 mb-8 tracking-tight leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-gray-900 mb-4 tracking-tight leading-snug">
             Let's Start Your<br />
             <span className="bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
               Digital Journey
             </span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium">
-            Ready to transform your digital presence? Reach out to us through any channel below. 
-            We're here to help you build something amazing.
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed font-medium">
+            Ready to transform your digital presence? Reach out to us through any channel below. We're here to help you build something amazing.
           </p>
         </motion.div>
 
         {/* Contact Info Cards */}
         <motion.div 
-          className="flex flex-wrap justify-center gap-6"
+          className="flex flex-wrap justify-center gap-6 mt-8"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -90,7 +79,7 @@ export default function Contact() {
               href={item.action}
               target={item.action.startsWith('http') ? "_blank" : "_self"}
               rel={item.action.startsWith('http') ? "noopener noreferrer" : ""}
-              className="flex items-center gap-4 bg-white border border-gray-200 rounded-xl px-6 py-4 min-w-[220px] hover:shadow-lg transition-shadow duration-300"
+              className="flex items-center gap-4 bg-white border border-gray-200 rounded-xl px-6 py-4 min-w-[180px] hover:shadow-lg transition-shadow duration-300"
               variants={itemVariants}
             >
               <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center">
