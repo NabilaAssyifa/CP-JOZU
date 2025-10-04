@@ -2,26 +2,26 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
-  faPhone, 
   faEnvelope
 } from "@fortawesome/free-solid-svg-icons";
-import { faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faInstagram, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { motion } from "framer-motion";
 
 export default function Contact() {
   const contactInfo = [
-    {
-      icon: faPhone,
-      title: "Phone",
-      details: "+62 881022731545",
-      action: "http://wa.me/62881022731545"
-    },
     {
       icon: faEnvelope,
       title: "Email",
       details: "jozudesain@gmail.com",
       action: "mailto:jozudesain@gmail.com"
     },
+    {
+      icon: faWhatsapp,
+      title: "Whatsapp",
+      details: "+62 881022731545",
+      action: "http://wa.me/62881022731545"
+    },
+    
     {
       icon: faInstagram,
       title: "Instagram",
@@ -65,7 +65,6 @@ export default function Contact() {
             Ready to transform your digital presence? Reach out to us through any channel below. We&apos;re here to help you build something amazing.
           </p>
         </motion.div>
-
         {/* Contact Info Cards */}
         <motion.div 
           className="flex flex-wrap justify-center gap-6 mt-8"
@@ -79,15 +78,15 @@ export default function Contact() {
               href={item.action}
               target={item.action.startsWith('http') ? "_blank" : "_self"}
               rel={item.action.startsWith('http') ? "noopener noreferrer" : ""}
-              className="flex items-center gap-4 bg-white border border-gray-200 rounded-xl px-6 py-4 min-w-[180px] hover:shadow-lg transition-shadow duration-300"
+              className="flex items-center gap-4 bg-white border border-gray-200 rounded-xl px-6 py-4 min-w-[180px] sm:min-w-[220px] max-w-[260px] w-full sm:w-[260px] hover:shadow-lg transition-shadow duration-300"
               variants={itemVariants}
             >
-              <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center flex-shrink-0">
                 <FontAwesomeIcon icon={item.icon} className="text-white text-lg" />
               </div>
               <div className="flex flex-col">
-                <span className="font-bold text-gray-900 text-sm">{item.title}</span>
-                <span className="text-gray-900 font-medium text-base">{item.details}</span>
+                <span className="font-bold text-gray-900 text-sm text-left">{item.title}</span>
+                <span className="text-gray-900 font-medium text-base text-left">{item.details}</span>
               </div>
             </motion.a>
           ))}
