@@ -98,7 +98,7 @@ export default function Home() {
           <p className="text-gray-600 max-w-2xl mx-auto text-base sm:text-lg md:text-xl font-light mb-8">
             We provide end-to-end technology solutions to support your
             <br className="hidden sm:block" />
-            business&apos;s digital transformation.
+             business&apos;s digital transformation.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
