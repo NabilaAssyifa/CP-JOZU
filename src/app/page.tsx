@@ -1,5 +1,5 @@
 'use client';
-
+import { motion } from "framer-motion";
 import React from 'react';
 import Link from 'next/link';
 import Footer from '@/components/footer';
@@ -55,16 +55,45 @@ export default function Home() {
 
         {/* Content */}
         <div className="container mx-auto px-4 sm:px-6 z-10 text-center max-w-full">
-          <p className="text-sm sm:text-base md:text-lg text-gray-600 font-semibold mb-3 tracking-wide">
-            Designing Digital Solutions that Matter
-          </p>
 
-          <h1 className="text-gray-600 text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            Empower Your Brand with <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-700 to-black">
-              Smart Creative Technology
-            </span>
-          </h1>
+<motion.h1
+      className="text-black text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
+      Creative partner <br />
+      <span className="relative inline-block">
+        {/* Background highlight */}
+        <motion.span
+          className="bg-gray-200 px-2 md:px-6 rounded-l-2xl py-1 text-gray-800 font-bold inline-block"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
+          style={{ transformOrigin: "left" }}
+        >
+          for every IT project
+        </motion.span>
+
+        {/* Garis tebal responsif di luar background */}
+        <motion.span
+          className="absolute top-0 bottom-0 -right-1 w-1 sm:w-1 bg-gray-500"
+          initial={{ height: 0 }}
+          animate={{ height: "100%" }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
+        >
+          {/* Label di atas garis */}
+          <motion.span
+            className="absolute -top-5 -right-10 bg-gray-500 text-white text-xs font-semibold px-2 py-0.5 rounded-r-md rounded-tl-md"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 1 }}
+          >
+            Jozu
+          </motion.span>
+        </motion.span>
+      </span>
+    </motion.h1>
 
           <p className="text-gray-600 max-w-2xl mx-auto text-base sm:text-lg md:text-xl font-light mb-8">
             We provide end-to-end technology solutions to support your
@@ -87,6 +116,8 @@ export default function Home() {
               <Image
                 src="/img/seework.png"
                 alt="Arrow Right"
+                  width={120}
+                  height={40}
                 className="inline-block ml-2 w-4 h-4"
               />
             </Link>

@@ -16,7 +16,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className="min-h-screen flex flex-col bg-white text-gray-900">
         {/* Navbar fixed di atas dengan shadow biar konsisten di mobile */}
         <header className="sticky top-0 z-50 shadow bg-white">
-          <Navbar />
+          <Navbar/>
         </header>
 
         {/* Main Content */}

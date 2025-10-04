@@ -1,67 +1,55 @@
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
-  faFacebookF, 
-  faTwitter, 
-  faInstagram, 
-  faLinkedinIn 
+  faWhatsapp, 
+  faInstagram,  
 } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white py-12 px-4">
-      <div className="container mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-8">
+    <footer className="bg-black text-gray-300 py-14 px-6 relative overflow-hidden">
+      {/* Gradient Glow Background */}
+      
+      <div className="container mx-auto max-w-7xl relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 mb-12">
+          
           {/* Company Info */}
-          <div className="space-y-4">
-            <h3 className="text-2xl font-bold">JOZU</h3>
-            <address className="not-italic text-gray-300">
-              <p>Lorem Street No. 123</p>
-              <p>Dolor City, Ipsum District</p>
-              <p>Province of Sit Amei, 12345</p>
-            </address>
-            <div className="flex space-x-4 mt-4">
-              <a href="#" aria-label="Facebook" className="hover:text-blue-400 transition">
-                <FontAwesomeIcon icon={faFacebookF} className="w-5 h-5" />
+          <div className="space-y-5">
+            <h3 className="text-3xl font-extrabold tracking-wide text-white">JOZU</h3>
+            <p className="text-sm text-gray-400 leading-relaxed">
+              Creative partner for every IT project.  
+              Transforming your ideas into digital solutions.
+            </p>
+            <div className="flex space-x-5 mt-6">
+              <a 
+                href="http://wa.me/62881022731545" 
+                aria-label="Whatsapp" 
+                className="hover:text-green-400 transition transform hover:scale-110"
+              >
+                <FontAwesomeIcon icon={faWhatsapp} className="w-6 h-6" />
               </a>
-              <a href="#" aria-label="Twitter" className="hover:text-blue-400 transition">
-                <FontAwesomeIcon icon={faTwitter} className="w-5 h-5" />
+              <a 
+                href="https://www.instagram.com/jozu.it?utm_source=ig_web_button_share_sheet&igsh=MTg5eTV2M3l6aGJkYg==" 
+                aria-label="Instagram" 
+                className="hover:text-pink-500 transition transform hover:scale-110"
+              >
+                <FontAwesomeIcon icon={faInstagram} className="w-6 h-6" />
               </a>
-              <a href="#" aria-label="Instagram" className="hover:text-pink-500 transition">
-                <FontAwesomeIcon icon={faInstagram} className="w-5 h-5" />
-              </a>
-              <a href="#" aria-label="LinkedIn" className="hover:text-blue-500 transition">
-                <FontAwesomeIcon icon={faLinkedinIn} className="w-5 h-5" />
+              <a 
+                href="mailto:jozudesain@gmail.com" 
+                aria-label="Email" 
+                className="hover:text-blue-400 transition transform hover:scale-110"
+              >
+                <FontAwesomeIcon icon={faEnvelope} className="w-6 h-6" />
               </a>
             </div>
-          </div>
-
-          {/* Navigation Links */}
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold">JOZU</h4>
-            <nav className="space-y-2 text-gray-300">
-              <Link href="/" className="block hover:text-white transition">Home</Link>
-              <Link href="/services" className="block hover:text-white transition">Services</Link>
-              <Link href="/portfolio" className="block hover:text-white transition">Portfolio</Link>
-              <Link href="/about" className="block hover:text-white transition">About</Link>
-              <Link href="/contact" className="block hover:text-white transition">Contact</Link>
-            </nav>
-          </div>
-
-          {/* Help Links */}
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold">Bantuan</h4>
-            <nav className="space-y-2 text-gray-300">
-              <Link href="#" className="block hover:text-white transition">Syarat & Ketentuan Layanan</Link>
-              <Link href="#" className="block hover:text-white transition">Kebijakan Privasi</Link>
-              <Link href="#" className="block hover:text-white transition">Kebijakan Pengguna</Link>
-            </nav>
           </div>
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-gray-700 pt-6 text-center text-gray-400">
-          <p>Copyright © 2025 Jozu IT Solution. All Rights Reserved</p>
+        <div className="border-t border-gray-800 pt-6 text-center text-sm text-gray-500">
+          <p>© 2025 Jozu IT Solution. All Rights Reserved</p>
         </div>
       </div>
     </footer>

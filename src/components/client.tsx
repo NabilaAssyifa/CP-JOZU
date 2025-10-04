@@ -1,7 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft, faChevronRight, faQuoteLeft } from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion";
 
 const testimonials = [
   {
@@ -32,105 +33,149 @@ const testimonials = [
 
 export default function Client() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const handlePrev = () => {
+    if (isAnimating) return;
+    setIsAnimating(true);
     setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
   };
 
   const handleNext = () => {
+    if (isAnimating) return;
+    setIsAnimating(true);
     setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
   };
 
+  // Auto-rotate
+  useEffect(() => {
+    const interval = setInterval(handleNext, 5000);
+    return () => clearInterval(interval);
+  }, [currentIndex]);
+
+  // Reset animation state after transition
+  useEffect(() => {
+    if (isAnimating) {
+      const timer = setTimeout(() => setIsAnimating(false), 500);
+      return () => clearTimeout(timer);
+    }
+  }, [isAnimating]);
+
+  const getInitials = (name: string) => {
+    return name
+      .split(" ")
+      .map((w) => w[0])
+      .join("")
+      .toUpperCase()
+      .slice(0, 2);
+  };
+
+  const getAvatarColor = (name: string) => {
+    const colors = [
+      "bg-gradient-to-br from-gray-700 to-gray-900",
+      "bg-gradient-to-br from-gray-600 to-gray-800", 
+      "bg-gradient-to-br from-gray-800 to-black",
+    ];
+    return colors[name.length % colors.length];
+  };
+
   return (
-    <div className="px-8 py-16 max-w-7xl mx-auto">
-      {/* What Client Says */}
-      <div className="mb-20">
-        <div className="flex justify-between items-center mb-12">
-          <h2 className="text-3xl font-bold">What Client Says</h2>
-          <div className="hidden md:flex gap-2">
-            <button
-              onClick={handlePrev}
-              className="flex items-center justify-center w-10 h-10 bg-gray-200 rounded-lg hover:bg-gray-300 transition-colors"
-              aria-label="Previous testimonials"
-            >
-              <FontAwesomeIcon icon={faChevronLeft} className="text-gray-600 w-3" />
-            </button>
-            <button
-              onClick={handleNext}
-              className="flex items-center justify-center w-10 h-10 bg-black rounded-lg hover:bg-gray-800 transition-colors"
-              aria-label="Next testimonials"
-            >
-              <FontAwesomeIcon icon={faChevronRight} className="text-white w-3" />
-            </button>
+    <div className="px-6 md:px-12 py-20 max-w-4xl mx-auto bg-white">
+      {/* Title */}
+      <motion.div
+        className="mb-14 text-center"
+        initial={{ opacity: 0, y: -30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 1 }}
+      >
+        <h2 className="text-4xl md:text-5xl font-extrabold text-black tracking-tight">
+          What Our Clients Say
+        </h2>
+        <p className="text-gray-500 mt-4 text-lg max-w-2xl mx-auto">
+          Stories of collaboration and success with our partners
+        </p>
+      </motion.div>
+
+      {/* Single Animated Card */}
+      <motion.div
+        key={currentIndex}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.8 }}
+        className="relative flex justify-center"
+      >
+        <div className="w-full max-w-2xl">
+          <div
+            className={`bg-white/70 backdrop-blur-md border border-gray-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform ${
+              isAnimating ? "opacity-0 scale-95" : "opacity-100 scale-100"
+            }`}
+          >
+            {/* Content */}
+            <div className="p-8 relative">
+              <FontAwesomeIcon 
+                icon={faQuoteLeft} 
+                className="text-gray-300 text-5xl absolute -top-2 left-6 opacity-50" 
+              />
+              <p className="text-gray-700 text-lg leading-relaxed text-center italic pt-4">
+                "{testimonials[currentIndex].content}"
+              </p>
+            </div>
+
+            {/* Footer */}
+            <div className="flex items-center justify-center gap-4 bg-black/90 rounded-b-2xl p-6">
+              <div className={`w-14 h-14 rounded-full flex items-center justify-center ${getAvatarColor(testimonials[currentIndex].name)} shadow-lg`}>
+                <span className="text-white font-bold text-sm">
+                  {getInitials(testimonials[currentIndex].name)}
+                </span>
+              </div>
+              <div className="text-center md:text-left">
+                <p className="font-semibold text-white text-lg">{testimonials[currentIndex].name}</p>
+                <p className="text-sm text-gray-300">{testimonials[currentIndex].company}</p>
+              </div>
+            </div>
           </div>
         </div>
+      </motion.div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full transition-all duration-500">
-          {testimonials
-            .slice(currentIndex, currentIndex + 3)
-            .concat(
-              currentIndex + 3 > testimonials.length
-                ? testimonials.slice(0, currentIndex + 3 - testimonials.length)
-                : []
-            )
-            .map((testimonial, index) => (
-              <div
-                key={index}
-                className="border-2 border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-              >
-                {/* Content */}
-                <div className="p-6">
-                  <p className="text-gray-600 text-base leading-relaxed">{testimonial.content}</p>
-                </div>
-                {/* Footer */}
-                <div className="flex items-center gap-4 bg-black p-6">
-                  <div className="w-12 h-12 bg-gray-300 rounded-full"></div>
-                  <div>
-                    <p className="font-bold text-white">{testimonial.name}</p>
-                    <p className="text-xs text-white font-light">{testimonial.company}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
+      {/* Navigation Arrows */}
+      <div className="flex justify-center gap-6 mt-8">
+        <button
+          onClick={handlePrev}
+          aria-label="Previous testimonial"
+          className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 shadow-md transition-all duration-300 hover:scale-110"
+        >
+          <FontAwesomeIcon icon={faChevronLeft} className="text-gray-600" />
+        </button>
+
+        {/* Progress Dots */}
+        <div className="flex items-center gap-2">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                if (!isAnimating && index !== currentIndex) {
+                  setIsAnimating(true);
+                  setCurrentIndex(index);
+                }
+              }}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index === currentIndex 
+                  ? "bg-black w-8" 
+                  : "bg-gray-300 hover:bg-gray-400"
+              }`}
+              aria-label={`Go to testimonial ${index + 1}`}
+            />
+          ))}
         </div>
 
-        {/* Mobile Arrows */}
-        <div className="flex justify-center gap-4 mt-8 md:hidden">
-          <button
-            title="Previous"
-            aria-label="Previous testimonials"
-            onClick={handlePrev}
-            className="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200"
-          >
-            <FontAwesomeIcon icon={faChevronLeft} />
-          </button>
-          <button
-            title="Next"
-            aria-label="Next testimonials"
-            onClick={handleNext}
-            className="w-10 h-10 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-800"
-          >
-            <FontAwesomeIcon icon={faChevronRight} />
-          </button>
-        </div>
-      </div>
-
-      {/* Divider */}
-      <div className="border-t border-gray-200 my-16"></div>
-
-      {/* Call to Action */}
-      <div className="text-center">
-        <h2 className="text-3xl md:text-4xl font-extrabold leading-snug mb-6">
-          Got a Digital Challenge? <br /> We've Got the Solution.
-        </h2>
-        <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
-          From design and development to branding we're here to deliver the
-          right solutions and outstanding results. <br />
-          Start your digital transformation today.
-        </p>
-        <button className="mt-8 px-8 py-3 bg-black text-white font-semibold rounded-md hover:bg-gray-800 transition-colors text-lg">
-          Consult Now
+        <button
+          onClick={handleNext}
+          aria-label="Next testimonial"
+          className="w-12 h-12 flex items-center justify-center rounded-full bg-black hover:bg-gray-800 shadow-md transition-all duration-300 hover:scale-110"
+        >
+          <FontAwesomeIcon icon={faChevronRight} className="text-white" />
         </button>
       </div>
     </div>
