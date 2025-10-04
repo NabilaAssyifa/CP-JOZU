@@ -180,7 +180,7 @@ export default function Portfolio(): JSX.Element {
               READY TO START YOUR <span className="bg-clip-text text-transparent bg-gradient-to-r from-black to-gray-700">PROJECT</span>?
             </h2>
             <p className="text-base sm:text-xl text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto">
-              Let's collaborate to build something extraordinary. Your vision, our expertise.
+              Let&apos;s collaborate to build something extraordinary. Your vision, our expertise.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="relative bg-black text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-bold text-base sm:text-lg transform hover:scale-105 transition-all duration-300 shadow-2xl group overflow-hidden">
