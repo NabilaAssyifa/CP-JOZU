@@ -46,12 +46,12 @@ export default function Client() {
     setIsAnimating(true);
     setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
   };
-
-  // Auto-rotate
   useEffect(() => {
-    const interval = setInterval(handleNext, 5000);
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+    }, 5000);
     return () => clearInterval(interval);
-  }, [currentIndex]);
+  }, []);
 
   // Reset animation state after transition
   useEffect(() => {
