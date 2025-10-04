@@ -119,7 +119,7 @@ export default function Client() {
                 className="text-gray-300 text-5xl absolute -top-2 left-6 opacity-50" 
               />
               <p className="text-gray-700 text-lg leading-relaxed text-center italic pt-4">
-                "{testimonials[currentIndex].content}"
+                &quot;{testimonials[currentIndex].content}&quot;
               </p>
             </div>
 

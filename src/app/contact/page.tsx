@@ -56,13 +56,13 @@ export default function Contact() {
             <span className="text-sm font-semibold text-gray-700 tracking-wide">GET IN TOUCH</span>
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-gray-900 mb-4 tracking-tight leading-snug">
-            Let's Start Your<br />
+            Let&apos;s Start Your<br />
             <span className="bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
               Digital Journey
             </span>
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed font-medium">
-            Ready to transform your digital presence? Reach out to us through any channel below. We're here to help you build something amazing.
+            Ready to transform your digital presence? Reach out to us through any channel below. We&apos;re here to help you build something amazing.
           </p>
         </motion.div>
 

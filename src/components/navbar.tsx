@@ -4,8 +4,6 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Wrench, ChevronDown, Code, Smartphone, Search, Palette } from 'lucide-react';
-import { JSX } from 'react';
 import Image from 'next/image';
 
 export default function GlassNavbar() {
