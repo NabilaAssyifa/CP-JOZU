@@ -73,7 +73,7 @@ export default function GlassNavbar() {
 
   return (
     <header
-      className={`fixed w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled ? 'py-3' : 'py-4'
       }`}
     >
